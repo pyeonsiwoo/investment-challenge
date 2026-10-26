@@ -1,260 +1,300 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5개년 투자 챌린지</title>
 <style>
-  :root{--bg:#100f0c;--panel:#191712;--panel2:#211d15;--gold:#d5b76a;--gold2:#f4d990;--line:#62502a;--muted:#b5ad9b;--text:#f5f0e4;--green:#83d0a2;--red:#f08f83;--blue:#8fc3e8}
-  *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(ellipse at top,#332a1a 0%,#17140f 45%,#0c0b09 100%);color:var(--text);font-family:Georgia,"Noto Serif KR","Batang",serif;min-height:100vh}
-  button,input{font:inherit} button{cursor:pointer;transition:.18s ease} button:disabled{opacity:.42;cursor:not-allowed;transform:none!important}
-  .shell{max-width:1440px;margin:0 auto;padding:24px 22px 50px}.frame{border:1px solid var(--line);outline:1px solid #3f331e;outline-offset:5px;padding:clamp(16px,2.5vw,34px);background:linear-gradient(145deg,rgba(18,16,12,.96),rgba(10,10,9,.97));box-shadow:0 20px 70px #0008;position:relative}
-  .frame:before,.frame:after{content:"✦";position:absolute;color:#9c8042;font-size:18px;top:10px}.frame:before{left:12px}.frame:after{right:12px}
-  .brandline{text-align:center;color:var(--gold);letter-spacing:.28em;font-size:11px;text-transform:uppercase;margin:2px 0 12px}.title{text-align:center;font-size:clamp(34px,5vw,62px);letter-spacing:.04em;margin:0;color:#f2dfac;text-shadow:0 2px 24px #b58b3533}.subtitle{text-align:center;color:#c8c0b0;margin:11px auto 24px;line-height:1.7;max-width:780px;font-size:14px}.ornament{height:1px;max-width:430px;margin:20px auto 26px;background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative}.ornament:after{content:"✧  ❧  ✧";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#14120e;padding:0 13px;color:var(--gold);font-size:13px}
-  .welcome{max-width:790px;margin:0 auto}.welcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.rule{background:#18150f;border:1px solid #46391f;padding:16px 14px;min-height:116px}.rule b{display:block;color:var(--gold2);font-size:19px;margin-bottom:8px}.rule span{color:#c5bca9;font-size:13px;line-height:1.65}.field-label{display:block;color:#d9c58e;font-size:13px;margin:18px 0 8px}.text-input{width:100%;background:#0f0e0b;color:var(--text);border:1px solid #564627;padding:13px 14px;outline:none}.text-input:focus{border-color:var(--gold)}
-  .gold-btn,.ghost-btn,.danger-btn{border:1px solid var(--gold);padding:12px 17px;color:#15120b;background:linear-gradient(135deg,#f2d995,#c09a4d);font-weight:bold;letter-spacing:.025em}.gold-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}.ghost-btn{background:#17140e;color:var(--gold2);border-color:#68542c}.ghost-btn:hover{background:#292115}.danger-btn{background:#321b16;border-color:#7c4539;color:#ffc0b2}.start-btn{display:block;width:100%;font-size:17px;padding:15px;margin:20px 0 0}
-  .topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:20px}.greeting small{color:var(--gold);letter-spacing:.12em}.greeting h2{margin:7px 0 0;font-size:28px}.greeting p{margin:5px 0;color:var(--muted);font-size:13px}.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{min-width:130px;border:1px solid #4c3c20;background:#17140f;padding:11px 15px}.stat span{display:block;color:#a9a08d;font-size:11px;margin-bottom:6px;letter-spacing:.05em}.stat strong{font-family:Arial,sans-serif;font-size:21px;color:#f1ddb0}.stat.money strong{color:#f4d990}.stat.info strong{color:#9ed8ff}.stat.timer strong{color:#f5eee1;font-variant-numeric:tabular-nums}
-  .year-track{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:0 0 22px}.year-step{padding:9px 5px;text-align:center;border:1px solid #3c3321;background:#15130f;color:#877f6d;font-size:12px}.year-step.active{border-color:var(--gold);color:#f3dda0;background:#292113;box-shadow:inset 0 -2px var(--gold)}.year-step.done{border-color:#5d775a;color:var(--green)}
-  .news-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:18px}.panel{border:1px solid #42351f;background:linear-gradient(145deg,#1a1711,#13120f);padding:18px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}.panel h3{font-size:19px;margin:5px 0 0;color:#f2e8d0}.news-event{font-size:23px;color:#ffe5a4;margin:13px 0 8px}.news-desc{font-size:13px;line-height:1.8;color:#cfc5b2;margin:0}.tag{display:inline-block;font-family:Arial,sans-serif;font-size:10px;letter-spacing:.05em;padding:5px 7px;border:1px solid #514226;color:#d9c68d}.news-list{padding:0;margin:9px 0 0;list-style:none}.news-list li{padding:9px 0;border-top:1px solid #30291d;color:#c8bfad;font-size:12px;line-height:1.65}.news-list li:before{content:"◆";font-size:8px;color:var(--gold);margin-right:9px}
-  .section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:26px 0 12px}.section-title h3{font-size:23px;margin:0;color:#f0dfb4}.section-title p{margin:5px 0 0;color:#9f9684;font-size:12px}.asset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.asset-card{border:1px solid #4a3b23;background:linear-gradient(145deg,#1d1a14,#12110e);padding:16px;display:flex;flex-direction:column;min-width:0}.asset-card:hover{border-color:#80693a}.asset-top{display:flex;align-items:start;justify-content:space-between;gap:10px}.asset-symbol{font:11px Arial,sans-serif;letter-spacing:.12em;color:#b49a5b}.asset-card h4{font-size:19px;margin:6px 0;color:#fff3d1}.asset-type{font-size:11px;color:#a59a85}.price{font:25px Arial,sans-serif;color:#f5dfaa;margin:14px 0 3px}.price-caption{font-size:11px;color:#938a78}.asset-desc{font-size:12px;color:#bdb4a3;line-height:1.65;min-height:38px;margin:12px 0}.asset-metrics{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #30291d;border-bottom:1px solid #30291d;font-size:11px;color:#a69b86}.asset-metrics strong{display:block;font:14px Arial,sans-serif;color:#dfd0ae;margin-top:4px}.holding-line{font-size:12px;color:#bdb39d;margin:10px 0}.holding-line strong{color:#f4e8c9}.trade-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}.amount-input{grid-column:1/-1;width:100%;padding:9px;border:1px solid #4b3e27;background:#0c0b09;color:#eee5d4;font-family:Arial,sans-serif}.trade-row button{padding:9px 8px;font-size:12px}.buy-btn{border:1px solid #8c7744;background:#ddc277;color:#181208;font-weight:bold}.sell-btn{border:1px solid #64483a;background:#271914;color:#efb6a9}.hint-mini{margin-top:11px;color:#8e8471;font-size:10px;line-height:1.5}
-  .hint-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.hint-card{border:1px solid #44351e;background:#19160f;padding:13px;min-width:0}.hint-card h4{font-size:15px;margin:0 0 5px;color:#edd89e}.hint-card p{font-size:11px;line-height:1.6;color:#a9a08e;min-height:38px;margin:0 0 12px}.hint-buttons{display:grid;grid-template-columns:1fr;gap:7px}.hint-buttons button{width:100%;padding:8px 6px;font-size:11px}.cheap{background:#242015;color:#ddc782;border:1px solid #69572d}.expensive{background:linear-gradient(100deg,#d6bc70,#a98338);color:#171108;border:1px solid #e3ca7b;font-weight:bold}.hint-result{margin-top:10px;border-left:2px solid var(--gold);padding:9px;background:#0f0e0b;color:#d4c7a7;font-size:11px;line-height:1.7;display:none}.hint-result.show{display:block}.hint-bought{display:block;color:#83d0a2;font-size:10px;margin-top:7px}
-  .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.holding-table{width:100%;border-collapse:collapse;font-size:12px}.holding-table th,.holding-table td{padding:10px 7px;border-bottom:1px solid #332b1d;text-align:right}.holding-table th:first-child,.holding-table td:first-child{text-align:left}.holding-table th{color:#9b917d;font-size:10px;font-weight:normal}.holding-table td{color:#d5cbb6}.positive{color:var(--green)!important}.negative{color:var(--red)!important}.empty{color:#8e8575;text-align:center;padding:20px 0;font-size:12px}.log-list{list-style:none;padding:0;margin:0}.log-list li{padding:8px 0;border-bottom:1px solid #332b1d;font-size:11px;line-height:1.6;color:#bcb19b}.log-list b{color:#e3d2a4}.footer-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid #40331f}.fineprint{color:#827967;font-size:10px;line-height:1.6;max-width:620px}.end-panel{text-align:center;padding:36px 14px 20px}.end-panel h2{font-size:clamp(30px,4vw,46px);color:#f0d797;margin:10px 0}.final-score{font:40px Arial,sans-serif;color:#f7e5b2;margin:18px 0 6px}.result-note{color:#c6bba4;line-height:1.8;font-size:13px;max-width:700px;margin:10px auto 24px}.rank-table{max-width:650px;margin:22px auto;border-collapse:collapse;width:100%}.rank-table th,.rank-table td{padding:11px;border-bottom:1px solid #3f341f}.rank-table th{font-size:11px;color:#a89b81}.rank-table td{font-size:13px}.rank-table .mine{color:#f5dc96;background:#282114}.small-note{font-size:10px;color:#8b826f;text-align:center;margin-top:15px}
-  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);opacity:0;background:#f1d899;color:#1a1409;padding:12px 18px;z-index:99;box-shadow:0 8px 30px #0008;font:13px Arial,sans-serif;transition:.25s;max-width:90vw;text-align:center}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.confirm-cover{position:fixed;inset:0;background:#000a;display:grid;place-items:center;z-index:50;padding:20px}.confirm-box{max-width:460px;width:100%;background:#18140d;border:1px solid var(--gold);padding:25px;text-align:center}.confirm-box h3{color:var(--gold2)}.confirm-box p{font-size:13px;line-height:1.7;color:#c8bda7}.confirm-box .actions{display:flex;justify-content:center;gap:10px;margin-top:18px}
-  .mp-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.mp-actions button{flex:1;min-width:180px}.room-code{font:700 30px Arial,sans-serif;color:#f4d990;letter-spacing:.18em;margin:10px 0}.room-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.8fr);gap:16px;align-items:start}.qr-wrap{background:#f8f5ed;padding:14px;display:inline-flex;min-height:230px;min-width:230px;align-items:center;justify-content:center}.mp-player-list{list-style:none;padding:0;margin:12px 0}.mp-player-list li{display:flex;justify-content:space-between;gap:12px;padding:12px 10px;border-bottom:1px solid #352b1b;color:#ddd1b7}.mp-player-list b{color:#f1dfad}.mp-status{font-size:12px;line-height:1.7;color:#b9ad96}.room-board-wrap{margin:18px 0}.room-board-wrap table{width:100%;border-collapse:collapse;font-size:12px}.room-board-wrap th,.room-board-wrap td{padding:9px 6px;border-bottom:1px solid #352b1b;text-align:right}.room-board-wrap th:first-child,.room-board-wrap td:first-child{text-align:left}.room-board-wrap th{font-size:10px;color:#aa9c80;font-weight:normal}.online-pill{display:inline-block;padding:4px 7px;border:1px solid #5b4b2a;color:#eedca8;font-size:10px;letter-spacing:.06em}.connection-note{padding:12px;border:1px solid #6a562a;background:#1d180f;color:#d9c99e;font-size:12px;line-height:1.7;margin-top:14px}
-  @media(max-width:1050px){.asset-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hint-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.stats{width:100%}.stat{flex:1}}
-  @media(max-width:700px){.room-layout{grid-template-columns:1fr}.qr-wrap{min-width:0;min-height:0}.mp-actions button{min-width:100%}}
-  @media(max-width:700px){.shell{padding:12px}.frame{padding:15px}.welcome-grid{grid-template-columns:1fr}.rule{min-height:0}.news-grid,.bottom-grid{grid-template-columns:1fr}.asset-grid{grid-template-columns:1fr}.hint-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{min-width:calc(50% - 6px)}.greeting h2{font-size:23px}.section-title{align-items:start;flex-direction:column}.footer-actions{align-items:stretch}.footer-actions button{width:100%}}
+:root{--gold:#e4c579;--bg:#100f0c;--panel:#1b1812;--text:#f5efdf;--green:#83d0a2;--red:#f08f83}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#332a1a,#100f0c 70%);color:var(--text);font-family:Arial,"Malgun Gothic",sans-serif}
+main{max-width:1200px;margin:auto;padding:24px}
+header{text-align:center;padding:28px;border:1px solid #725b2d;background:#19160f}
+h1{color:var(--gold);font-size:clamp(28px,5vw,48px)}
+h2{color:var(--gold)}
+button,input{font:inherit;padding:10px;border:1px solid #725b2d;border-radius:5px}
+button{cursor:pointer;background:var(--gold);color:#17130a;font-weight:bold}
+button:disabled{opacity:.4;cursor:not-allowed}
+input{background:#100f0c;color:white;max-width:100%;width:100%}
+.panel{background:var(--panel);border:1px solid #514125;padding:18px;margin:16px 0;border-radius:8px}
+.stats,.grid,.hints{display:grid;gap:12px}
+.stats{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.grid{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.hints{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.stat,.asset,.hint{background:#211d15;border:1px solid #514125;padding:15px;border-radius:7px}
+.stat strong{display:block;color:var(--gold);font-size:23px;margin-top:8px}
+.asset h3,.hint h3{color:var(--gold)}
+.price{font-size:24px;color:#f4dc9e}
+.muted{color:#b5ad9b;font-size:13px;line-height:1.6}
+.positive{color:var(--green)}
+.negative{color:var(--red)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.actions button{width:100%}
+.sell{background:#38231c;color:#ffc0b2}
+.hint button{width:100%;margin-top:7px}
+#log{max-height:260px;overflow:auto}
+#log p{border-bottom:1px solid #393020;padding-bottom:8px;font-size:13px}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:9px;border-bottom:1px solid #393020}
+footer{text-align:center;color:#8c826e;font-size:12px;padding:25px}
 </style>
 </head>
 <body>
-<div class="shell"><main class="frame" id="app"></main></div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<main>
+<header>
+<div>FINANCIAL STRATEGY GAME</div>
+<h1>5개년 투자 챌린지</h1>
+<p class="muted">뉴스를 분석하고 투자 전략을 세워 최종 자산을 늘려 보세요.</p>
+</header>
+
+<section id="welcome" class="panel">
+<h2>게임 시작</h2>
+<label>참가자 이름</label>
+<input id="playerName" maxlength="16" placeholder="이름 입력">
+<p class="muted">초기 자금 100코인 · 총 5년 · 가상 투자 시뮬레이션</p>
+<button onclick="startGame()">투자 시작</button>
+</section>
+
+<section id="game" hidden>
+<div class="stats">
+<div class="stat">보유 현금<strong id="cash">100</strong></div>
+<div class="stat">현재 순자산<strong id="worth">100</strong></div>
+<div class="stat">정보 코인<strong id="coins">8</strong></div>
+<div class="stat">진행 연도<strong id="year">1년 차</strong></div>
+</div>
+
+<div class="panel">
+<h2 id="newsTitle">올해의 시장 뉴스</h2>
+<p id="newsDesc"></p>
+<p class="muted" id="indicators"></p>
+</div>
+
+<h2>투자 상품</h2>
+<div id="assets" class="grid"></div>
+
+<h2>정보 상점</h2>
+<p class="muted">분야마다 저렴한 힌트와 심층 힌트를 구매할 수 있습니다.</p>
+<div id="hints" class="hints"></div>
+
+<div class="panel">
+<h2>내 투자 현황</h2>
+<div id="portfolio"></div>
+</div>
+
+<div class="panel">
+<h2>투자 기록</h2>
+<div id="log"></div>
+</div>
+
+<div class="panel">
+<h2>연도 결산</h2>
+<p class="muted">연도 마감 시 상품 가격이 변하고, 이자·배당과 돌발 사건이 반영됩니다.</p>
+<button id="nextYear" onclick="closeYear()">연도 마감하고 다음 해로</button>
+</div>
+</section>
+
+<section id="result" class="panel" hidden>
+<h1>투자 챌린지 종료</h1>
+<h2 id="finalName"></h2>
+<p>최종 순자산</p>
+<h1 id="finalWorth"></h1>
+<p id="finalChange"></p>
+<h2>기록</h2>
+<div id="finalLog"></div>
+<button onclick="location.reload()">다시 도전</button>
+</section>
+
+<footer>학습용 가상 투자 게임입니다. 실제 투자 조언이 아닙니다.</footer>
+</main>
+
 <script>
-'use strict';
-const ASSETS = [
- {id:'deposit',name:'안심 정기예금',symbol:'SAFE DEPOSIT',category:'deposit',type:'안정형 · 낮은 위험',price:1,base:.04,vol:.006,yield:0,desc:'큰 변동 없이 이자를 쌓는 상품. 급하게 돈을 쓸 계획이라면 현금과 함께 활용해 보자.'},
- {id:'govbond',name:'국채 3년물',symbol:'GOVERNMENT BOND',category:'bond',type:'채권 · 비교적 안정적',price:1,base:.004,vol:.035,yield:.045,desc:'정부가 발행한 채권. 매년 이자 수익이 생기지만 시장금리 변화에 따라 가격은 움직인다.'},
- {id:'corpbond',name:'성장기업 회사채',symbol:'CORPORATE BOND',category:'bond',type:'채권 · 신용 위험 있음',price:1,base:-.005,vol:.075,yield:.065,desc:'국채보다 높은 이자를 기대할 수 있지만, 발행 기업의 상황이 나빠지면 가격이 크게 하락할 수 있다.'},
- {id:'neo',name:'네오반도체',symbol:'NEO SEMICON',category:'stock',sector:'semiconductor',type:'주식 · 반도체',price:1,base:.055,vol:.20,yield:.012,desc:'AI 서버와 메모리 반도체 수요에 민감한 기업. 업황이 좋으면 크게 오르지만 변동성도 높다.'},
- {id:'hanbit',name:'한빛모터스',symbol:'HANBIT MOTORS',category:'stock',sector:'auto',type:'주식 · 모빌리티',price:1,base:.04,vol:.17,yield:.018,desc:'전기차와 미래 모빌리티 부품을 개발한다. 판매 실적과 공급망 뉴스의 영향을 받는다.'},
- {id:'lumi',name:'루미AI',symbol:'LUMI AI',category:'stock',sector:'ai',type:'주식 · 인공지능',price:1,base:.065,vol:.27,yield:0,desc:'성장 기대가 큰 AI 기업. 성공하면 수익이 클 수 있지만 기대가 꺾일 때 손실도 크다.'},
- {id:'green',name:'그린웨이 에너지',symbol:'GREENWAY ENERGY',category:'stock',sector:'green',type:'주식 · 친환경 에너지',price:1,base:.045,vol:.21,yield:.008,desc:'재생에너지와 전력 저장 설비를 개발한다. 정책과 원자재 가격에 영향을 받는다.'},
- {id:'marketetf',name:'코리아 시장 ETF',symbol:'KOREA MARKET ETF',category:'etf',price:1,base:.05,vol:.13,yield:.015,desc:'여러 기업에 나누어 투자하는 상품. 개별 주식보다 분산 효과가 있지만 시장 전체가 하락하면 손실이 난다.'},
- {id:'tech etf',name:'미래기술 ETF',symbol:'FUTURE TECH ETF',category:'etf',price:1,base:.065,vol:.18,yield:.005,desc:'AI·반도체·로봇 등 기술 기업에 집중한다. 기술주 호황에 유리하지만 하락장에서는 더 크게 흔들릴 수 있다.'},
- {id:'gold',name:'금 ETF',symbol:'GOLD ETF',category:'gold',price:1,base:.025,vol:.12,yield:0,desc:'물가 상승이나 시장 불안 때 관심을 받는 자산. 항상 오르는 것은 아니며 가격 변동이 발생한다.'}
+const initialAssets = [
+{id:"deposit",name:"정기예금",category:"안전자산",price:1,vol:.015,yield:.045,desc:"가격 변동은 작지만 높은 수익을 기대하기 어렵습니다."},
+{id:"bond",name:"국채",category:"채권",price:1,vol:.055,yield:.035,desc:"금리 변화에 영향을 받는 채권입니다."},
+{id:"company",name:"기업 회사채",category:"채권",price:1,vol:.09,yield:.065,desc:"이자 수익이 높지만 신용 위험이 있습니다."},
+{id:"tech",name:"기술 기업 A",category:"주식",price:1,vol:.22,yield:.01,desc:"성장 가능성이 높지만 가격 변동도 큽니다."},
+{id:"green",name:"친환경 기업 B",category:"주식",price:1,vol:.18,yield:.015,desc:"친환경 산업의 성장과 정책에 영향을 받습니다."},
+{id:"index",name:"종합 주가지수 ETF",category:"ETF",price:1,vol:.12,yield:.02,desc:"여러 기업에 분산 투자하는 상품입니다."},
+{id:"robot",name:"AI·로봇 ETF",category:"ETF",price:1,vol:.2,yield:.005,desc:"AI·로봇 산업의 성장 전망에 영향을 받습니다."},
+{id:"gold",name:"금",category:"원자재",price:1,vol:.1,yield:0,desc:"시장 불안과 물가 변화에 영향을 받을 수 있습니다."},
+{id:"oil",name:"원유",category:"원자재",price:1,vol:.25,yield:0,desc:"공급과 수요, 국제 정세에 따라 크게 변동합니다."}
 ];
-const CATEGORY_INFO = {
- deposit:{label:'예금',cheap:'예금 금리와 안정성',expensive:'예금 금리 전망 분석',tip:'예금은 가격 등락 대신 이자율과 물가를 함께 살펴보자.'},
- bond:{label:'채권',cheap:'채권 시장의 금리 신호',expensive:'채권 가격·신용 위험 분석',tip:'금리가 오르면 기존 채권 가격이 내려갈 수 있고, 회사채는 신용 위험도 고려해야 한다.'},
- stock:{label:'개별 주식',cheap:'기업 실적과 업종 분위기',expensive:'기업별 예상 수익 비교',tip:'성장 가능성만 보지 말고 변동성과 배당도 함께 살펴보자.'},
- etf:{label:'ETF',cheap:'시장·기술주 흐름',expensive:'ETF별 수익·변동성 분석',tip:'ETF도 구성 자산에 따라 위험 수준이 다르다.'},
- gold:{label:'금',cheap:'물가와 안전자산 수요',expensive:'금 가격 요인 심층 분석',tip:'불확실성이 커질 때 금이 강해질 수 있지만 반대 흐름도 가능하다.'}
+
+const news = [
+{title:"기술 산업 투자 확대",desc:"기업들의 신기술 투자가 늘어나고 있습니다. 성장 산업에는 기회가 있지만 기대가 가격에 이미 반영됐을 수도 있습니다.",effects:{tech:.09,robot:.12,index:.035,oil:.01}},
+{title:"기준금리 인상",desc:"금리 상승으로 예금의 매력이 높아질 수 있지만 기존 채권과 성장주에는 부담이 될 수 있습니다.",effects:{deposit:.015,bond:-.07,company:-.04,tech:-.08,robot:-.06}},
+{title:"경기 회복 신호",desc:"소비와 생산이 회복되고 있습니다. 기업 실적 개선이 기대되지만 원자재 가격 상승도 발생할 수 있습니다.",effects:{company:.07,tech:.06,green:.04,index:.07,oil:.09}},
+{title:"국제 정세 불안",desc:"국제 정세의 불확실성이 커졌습니다. 안전자산 선호가 나타날 수 있지만 원자재 가격은 공급 상황에 따라 달라집니다.",effects:{gold:.11,index:-.08,tech:-.09,oil:.13}},
+{title:"친환경 정책 강화",desc:"친환경 산업에 대한 지원 정책이 발표됐습니다. 관련 기업에 기회가 될 수 있지만 실제 수익성도 중요합니다.",effects:{green:.12,index:.025,oil:-.035}},
+{title:"물가 상승 압력",desc:"물가가 예상보다 빠르게 상승하고 있습니다. 금은 영향을 받을 수 있지만 가격 상승이 반드시 보장되지는 않습니다.",effects:{gold:.08,deposit:-.025,bond:-.045,company:-.025}},
+{title:"기업 실적 부진",desc:"일부 기업의 실적이 기대에 미치지 못했습니다. 기업별 차이를 살펴보고 한 상품에 집중하는 위험을 고려하세요.",effects:{tech:-.12,green:-.07,robot:-.1,index:-.06}},
+{title:"신기술 상용화 성공",desc:"새로운 기술이 실제 제품에 적용되기 시작했습니다. 관련 기업에 기회가 생길 수 있지만 경쟁도 심해질 수 있습니다.",effects:{tech:.13,robot:.15,index:.04}},
+{title:"원자재 공급 증가",desc:"주요 원자재 공급이 늘어났습니다. 원유 가격이 하락할 수 있지만 다른 자산에 미치는 영향은 다를 수 있습니다.",effects:{oil:-.14,index:.025,company:.025}},
+{title:"시장 안정과 소비 회복",desc:"불확실성이 줄고 소비가 회복되고 있습니다. 시장 전반에 긍정적일 수 있지만 자산별 수익률은 다릅니다.",effects:{index:.08,company:.055,tech:.04,green:.035}}
+];
+
+let assets, state, currentNews;
+
+const categories = {
+"안전자산":{cheap:"예금은 큰 가격 상승보다 이자율과 물가를 비교하는 것이 중요합니다.",expensive:"안전자산은 수익률뿐 아니라 실질 구매력을 확인하세요. 물가 상승률이 이자율보다 높으면 구매력이 줄어들 수 있습니다."},
+"채권":{cheap:"금리가 오르면 기존 채권 가격이 하락할 수 있습니다.",expensive:"채권 수익은 이자와 가격 변화를 함께 봐야 합니다. 회사채는 발행 기업의 신용 위험도 확인하세요."},
+"주식":{cheap:"기업 실적과 산업 전망을 함께 비교하세요.",expensive:"성장 전망이 좋아도 가격이 지나치게 높으면 손실이 발생할 수 있습니다. 여러 기업에 나눠 투자하는 방법을 고려하세요."},
+"ETF":{cheap:"ETF가 어떤 기업과 산업에 투자하는지 확인하세요.",expensive:"ETF의 분산 효과는 구성 종목에 따라 달라집니다. 같은 산업에 집중된 ETF 여러 개는 위험이 겹칠 수 있습니다."},
+"원자재":{cheap:"원자재 가격은 수요뿐 아니라 공급과 국제 정세에도 영향을 받습니다.",expensive:"원자재는 가격 변동이 클 수 있고 이자나 배당이 없는 경우가 많습니다. 투자 비중과 손실 가능성을 함께 고려하세요."}
 };
-const EVENTS = [
- {title:'기준금리 인상',desc:'중앙은행이 물가를 잡기 위해 기준금리를 올렸다. 예금 금리는 점진적으로 오를 수 있지만, 기존 채권과 성장주의 부담은 커질 수 있다.',impact:{deposit:.008,bond:-.035,stock:-.025,etf:-.02,gold:.005}},
- {title:'기준금리 인하',desc:'경기 부양을 위해 금리가 내려갔다. 기존 채권 가격과 성장주에는 긍정적일 수 있지만, 새 예금의 이자 매력은 낮아질 수 있다.',impact:{deposit:-.008,bond:.028,stock:.025,etf:.02,gold:.002}},
- {title:'AI 수요 급증',desc:'기업들의 AI 서버 투자와 데이터센터 증설이 예상보다 빠르게 늘었다. 기술 업종에 기회가 생겼지만 기대가 과해질 가능성도 있다.',impact:{deposit:0,bond:.002,stock:.035,etf:.04,gold:0},sector:{ai:.10,semiconductor:.075}},
- {title:'물가 상승과 원자재 부담',desc:'에너지와 원자재 가격이 오르면서 기업의 비용 부담이 커졌다. 금은 물가 불안의 영향을 받을 수 있다.',impact:{deposit:.006,bond:-.02,stock:-.035,etf:-.025,gold:.085},sector:{auto:-.025,green:-.02}},
- {title:'친환경 투자 지원 확대',desc:'정부가 재생에너지와 전력 저장 설비 지원 계획을 발표했다. 관련 기업에는 기회지만 실제 실적이 따라오는지 확인해야 한다.',impact:{deposit:0,bond:.002,stock:.015,etf:.015,gold:0},sector:{green:.105}},
- {title:'세계 경기 둔화',desc:'주요 교역국의 소비와 생산이 둔화되었다. 기업 실적 우려가 커졌고, 일부 투자자는 상대적으로 안전한 자산을 찾고 있다.',impact:{deposit:.004,bond:.012,stock:-.13,etf:-.095,gold:.045},sector:{auto:-.035,semiconductor:-.035}},
- {title:'기업 실적 예상 상회',desc:'여러 산업의 분기 실적이 예상보다 좋게 발표됐다. 시장 분위기가 개선됐지만, 모든 기업이 같은 성과를 내는 것은 아니다.',impact:{deposit:0,bond:.003,stock:.055,etf:.045,gold:-.005}},
- {title:'공급망 차질',desc:'부품 조달 지연과 운송 비용 증가가 발생했다. 생산 의존도가 높은 기업은 영향을 받을 수 있고 시장 변동성도 커졌다.',impact:{deposit:0,bond:-.01,stock:-.035,etf:-.03,gold:.025},sector:{semiconductor:-.08,auto:-.075}},
- {title:'시장의 낙관론 확산',desc:'소비와 고용 지표가 예상보다 견조해 투자 심리가 개선됐다. 다만 주가가 빠르게 오른 뒤에는 조정 가능성도 있다.',impact:{deposit:0,bond:-.005,stock:.045,etf:.038,gold:-.012}},
- {title:'은행권 신용 불안',desc:'일부 금융기관의 부실 우려가 커지며 신용 위험에 대한 경계가 높아졌다. 회사채는 발행 기업의 신용도를 특히 살펴볼 필요가 있다.',impact:{deposit:0,bond:-.035,stock:-.045,etf:-.03,gold:.05},asset:{corpbond:-.13}},
- {title:'전력망·로봇 자동화 투자',desc:'산업 현장의 자동화와 전력망 개선 사업이 확대됐다. 기술·에너지 분야에 장기 기회가 생길 수 있지만 결과는 기업별로 다르다.',impact:{deposit:0,bond:.002,stock:.025,etf:.035,gold:0},sector:{green:.045,ai:.04}},
- {title:'예상 밖의 시장 조정',desc:'투자자들이 높은 가격 부담을 다시 평가하며 시장이 흔들렸다. 현금을 보유한 투자자는 기회를 얻을 수 있지만, 손실을 확정하지 않도록 주의해야 한다.',impact:{deposit:.002,bond:.005,stock:-.085,etf:-.07,gold:.018}}
-];
-let state = null; let tickHandle = null; let toastHandle = null;
-const queryParams = new URLSearchParams(location.search);
-const incomingRoom = (queryParams.get('host') && queryParams.get('room'))
-  ? { hostPeerId: queryParams.get('host'), roomCode: queryParams.get('room') }
-  : null;
-let roomInviteActive = !!incomingRoom;
-const mp = { mode:'solo', peer:null, hostConn:null, connections:{}, members:{}, name:'', roomCode:'', hostPeerId:'', roomUrl:'', started:false, seed:0, connecting:false };
-let currentMarketRandom = null;
-const $ = id => document.getElementById(id);
-const money = n => `${Number(n).toFixed(2)} 코인`;
-const pct = n => `${n>=0?'+':''}${(n*100).toFixed(1)}%`;
-const safeName = s => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const totalHoldings = () => ASSETS.reduce((sum,a)=>sum+(state.holdings[a.id]||0)*a.price,0);
-const netWorth = () => state.cash + totalHoldings();
-const categoryAssets = cat => ASSETS.filter(a=>a.category===cat);
-function toast(message){const t=$('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastHandle);toastHandle=setTimeout(()=>t.classList.remove('show'),2600)}
-function scoreboard(){try{return JSON.parse(localStorage.getItem('investmentChallengeScores')||'[]')}catch(e){return []}}
-function saveScore(record){const records=scoreboard();records.push(record);records.sort((a,b)=>b.score-a.score);localStorage.setItem('investmentChallengeScores',JSON.stringify(records.slice(0,10)))}
-function seededRandom(seed){let t=Number(seed)>>>0;return function(){t=(t+0x6D2B79F5)>>>0;let x=t;x=Math.imul(x^(x>>>15),x|1);x^=x+Math.imul(x^(x>>>7),x|61);return ((x^(x>>>14))>>>0)/4294967296}}
-function marketRandom(){return currentMarketRandom?currentMarketRandom():Math.random()}
-function randomRoomCode(){return Math.random().toString(36).slice(2,7).toUpperCase().padEnd(5,'7')}
-function playerCount(){return Object.keys(mp.members||{}).length}
-function roomUrlForHost(){const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('host',mp.hostPeerId);u.searchParams.set('room',mp.roomCode);return u.toString()}
-function createPeer(){if(!window.Peer){toast('온라인 연결 라이브러리를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.');return null}try{return new Peer(undefined,{debug:1})}catch(e){toast('온라인 연결을 시작하지 못했어요.');return null}}
-function createRoom(){
- const name=((($('player-name')||{}).value)||'').trim()||'이름 없는 투자자';
- if(location.protocol==='file:'){toast('다른 기기와 대결하려면 먼저 이 사이트를 HTTPS 웹 주소로 게시해야 해요. 안내서는 ZIP에 있어요.');return}
- if(!/^https?:$/.test(location.protocol)){toast('웹 주소로 접속한 뒤 방을 만들어 주세요.');return}
- const peer=createPeer();if(!peer)return;
- mp.mode='host';mp.peer=peer;mp.hostConn=null;mp.connections={};mp.members={};mp.name=name.slice(0,24);mp.roomCode=randomRoomCode();mp.hostPeerId='';mp.started=false;mp.connecting=true;
- $('app').innerHTML=`<div class="brandline">MULTIPLAYER ROOM</div><h1 class="title">대결 방 준비 중</h1><p class="subtitle">연결을 준비하고 있어요. 이 화면을 닫지 마세요.</p><div class="panel" style="max-width:560px;margin:auto;text-align:center"><div class="eyebrow">CONNECTING</div><p class="mp-status">방 연결 서버에 접속하는 중입니다…</p><button class="ghost-btn" onclick="leaveRoom()">취소</button></div>`;
- peer.on('open',id=>{mp.hostPeerId=id;mp.connecting=false;mp.roomUrl=roomUrlForHost();mp.members[id]={id,name:mp.name,host:true,year:0,score:100,finished:false,connected:true};renderRoomLobby()});
- peer.on('connection',conn=>setupHostConnection(conn));
- peer.on('error',err=>{console.error(err);if(!mp.started){toast('방 연결에 실패했어요. 인터넷이나 학교 네트워크에서 PeerJS 연결이 차단됐는지 확인해 주세요.');if(!mp.hostPeerId)renderWelcome()}});
+
+function $(id){return document.getElementById(id)}
+function money(n){return n.toFixed(2)}
+function random(min,max){return Math.random()*(max-min)+min}
+function log(message){
+ const el=document.createElement("p");
+ el.innerHTML=message;
+ $("log").prepend(el);
 }
-function joinRoomFromLink(){
- const name=((($('player-name')||{}).value)||'').trim()||'이름 없는 투자자';
- if(!incomingRoom){toast('초대 QR코드나 방 링크로 접속해 주세요.');return}
- if(location.protocol==='file:'){toast('이 링크를 다른 기기에서 열려면 사이트가 HTTPS로 게시되어 있어야 해요.');return}
- const peer=createPeer();if(!peer)return;
- mp.mode='guest';mp.peer=peer;mp.hostConn=null;mp.connections={};mp.members={};mp.name=name.slice(0,24);mp.roomCode=incomingRoom.roomCode;mp.hostPeerId=incomingRoom.hostPeerId;mp.started=false;mp.connecting=true;
- renderJoinConnecting();
- peer.on('open',()=>{
-  const conn=peer.connect(mp.hostPeerId,{reliable:true});mp.hostConn=conn;
-  conn.on('open',()=>{conn.send({type:'join',roomCode:mp.roomCode,name:mp.name});mp.connecting=false});
-  conn.on('data',data=>handleGuestMessage(data));
-  conn.on('close',()=>{if(mp.mode==='guest'&&!state){toast('방과의 연결이 끊어졌어요. 방장이 방을 열어 두었는지 확인해 주세요.')}});
-  conn.on('error',err=>{console.error(err);toast('방에 연결하지 못했어요. 방장이 대기실에 있는지 확인해 주세요.')});
- });
- peer.on('error',err=>{console.error(err);mp.connecting=false;toast('온라인 연결이 실패했어요. 다시 시도해 주세요.')});
+function safe(text){
+ return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-function renderJoinConnecting(){$('app').innerHTML=`<div class="brandline">MULTIPLAYER ROOM</div><h1 class="title">방에 입장 중</h1><p class="subtitle">방 코드 <b>${safeName(mp.roomCode)}</b> · 이름 ${safeName(mp.name)}</p><div class="panel" style="max-width:560px;margin:auto;text-align:center"><div class="eyebrow">CONNECTING</div><p class="mp-status">방장과 연결하고 있어요. 잠시 후 대기실이 나타납니다.</p><button class="ghost-btn" onclick="leaveRoom()">취소</button></div>`}
-function safeSend(conn,payload){try{if(conn&&conn.open)conn.send(payload)}catch(e){console.warn('send failed',e)}}
-function setupHostConnection(conn){
- mp.connections[conn.peer]=conn;
- conn.on('data',data=>{
-  if(!data||typeof data!=='object')return;
-  if(data.type==='join'){
-   if(mp.started){safeSend(conn,{type:'error',message:'경기가 이미 시작되어 새 참가자를 받을 수 없어요.'});return}
-   if(data.roomCode!==mp.roomCode){safeSend(conn,{type:'error',message:'방 코드가 일치하지 않아요.'});return}
-   if(!mp.members[conn.peer]&&playerCount()>=8){safeSend(conn,{type:'error',message:'한 방에는 최대 8명까지 참가할 수 있어요.'});return}
-   mp.members[conn.peer]={id:conn.peer,name:String(data.name||'이름 없는 투자자').slice(0,24),host:false,year:0,score:100,finished:false,connected:true};
-   safeSend(conn,{type:'roomState',roomCode:mp.roomCode,members:mp.members,started:false});broadcastRoster();if(!mp.started)renderRoomLobby();
-  }else if(data.type==='progress'){
-   const old=mp.members[conn.peer];if(!old)return;
-   mp.members[conn.peer]={...old,name:String(data.name||old.name).slice(0,24),year:Math.max(0,Math.min(5,Number(data.year)||0)),score:Math.max(0,Number(data.score)||0),finished:!!data.finished,infoCoins:Number(data.infoCoins)||0,connected:true};broadcastRoster();
-  }
- });
- conn.on('close',()=>{if(mp.connections[conn.peer])delete mp.connections[conn.peer];if(mp.members[conn.peer])mp.members[conn.peer].connected=false;broadcastRoster();if(!mp.started)renderRoomLobby()});
- conn.on('error',err=>console.warn('peer connection error',err));
+function startGame(){
+ const name=$("playerName").value.trim();
+ if(!name){alert("이름을 입력해 주세요.");return}
+ assets=JSON.parse(JSON.stringify(initialAssets));
+ state={name,cash:100,coins:8,year:1,holdings:{},basis:{},starting:100,returns:{},finished:false};
+ $("welcome").hidden=true;
+ $("game").hidden=false;
+ log("<b>게임 시작</b> · 초기 자금 100코인으로 투자를 시작했습니다.");
+ startYear();
 }
-function handleGuestMessage(data){
- if(!data||typeof data!=='object')return;
- if(data.type==='error'){$('app').innerHTML=`<div class="brandline">ROOM ERROR</div><h1 class="title">방에 입장할 수 없음</h1><p class="subtitle">${safeName(data.message||'방에 입장하지 못했어요.')}</p><button class="ghost-btn" onclick="leaveRoom()">처음으로</button>`;return}
- if(data.type==='roomState'||data.type==='roster'){
-  mp.members=data.members||mp.members;mp.roomCode=data.roomCode||mp.roomCode;
-  if(!state){renderRoomLobby()}else updateRoomBoard();
-  if(data.started&&data.seed&&!state){mp.seed=data.seed;mp.started=true;startGame(true)}
- }else if(data.type==='start'){
-  if(state&&state.onlineMatch)return;
-  mp.seed=data.seed;mp.started=true;mp.members=data.members||mp.members;startGame(true);
- }
-}
-function broadcastRoster(){
- if(mp.mode!=='host')return;
- const packet={type:'roster',roomCode:mp.roomCode,members:mp.members,started:mp.started};
- Object.values(mp.connections).forEach(conn=>safeSend(conn,packet));
- if(!state)renderRoomLobby();else updateRoomBoard();
-}
-function renderRoomLobby(){
- const players=Object.values(mp.members||{}).sort((a,b)=>(a.host?-1:0)-(b.host?-1:0));
- const isHost=mp.mode==='host';
- const list=players.length?players.map(p=>`<li><span><b>${safeName(p.name)}</b><br><small>${p.host?'방장':p.connected===false?'연결 끊김':p.year?`${p.year}/5년 진행`:'참가 완료'}</small></span><span class="online-pill">${p.finished?'완료':p.connected===false?'오프라인':p.host?'HOST':'접속'}</span></li>`).join(''):'<li>아직 참가자가 없습니다.</li>';
- $('app').innerHTML=`<div class="brandline">MULTIPLAYER ROOM</div><h1 class="title">투자 대결 대기실</h1><p class="subtitle">QR코드를 찍은 친구가 이 방에 들어오면 참가자 목록에 표시됩니다.</p><div class="room-layout"><section class="panel"><div class="eyebrow">ROOM CODE</div><div class="room-code">${safeName(mp.roomCode||'-----')}</div><p class="mp-status">${isHost?'이 QR코드와 링크를 친구에게 공유하세요. 대결을 시작할 때까지 이 탭을 켜 두세요.':'방장과 연결되었습니다. 방장이 대결을 시작하면 게임이 함께 시작됩니다.'}</p><div class="panel-head" style="margin-top:18px"><div><div class="eyebrow">PLAYERS</div><h3>참가자 (${players.length}/8)</h3></div><span class="tag">${isHost?'방장':'참가자'}</span></div><ul class="mp-player-list">${list}</ul><div class="mp-actions">${isHost?`<button class="gold-btn" onclick="startRoomMatch()" ${players.length<2?'disabled':''}>대결 시작</button><button class="ghost-btn" onclick="copyRoomLink()">초대 링크 복사</button>`:`<button class="gold-btn" disabled>방장 시작 대기 중</button>`}<button class="ghost-btn" onclick="leaveRoom()">방 나가기</button></div>${isHost&&players.length<2?'<p class="small-note">친구가 1명 이상 들어오면 대결을 시작할 수 있어요.</p>':''}</section>${isHost?`<section class="panel" style="text-align:center"><div class="eyebrow">SCAN TO JOIN</div><h3>QR코드로 입장</h3><div id="room-qr" class="qr-wrap" style="margin:16px auto"></div><p class="mp-status" style="word-break:break-all">${safeName(mp.roomUrl)}</p><p class="small-note">사이트를 HTTPS 주소로 게시한 상태에서만 다른 기기가 이 QR코드를 사용할 수 있습니다.</p></section>`:`<section class="panel"><div class="eyebrow">ROOM RULES</div><h3>진행 방식</h3><p class="mp-status">모두 100코인과 정보 코인 10개로 시작합니다. 5년 동안 각자 투자하며, 시장 뉴스와 자산 수익률은 참가자 모두에게 동일하게 적용됩니다.</p><div class="connection-note">연결 상태가 유지되도록 이 창을 닫지 말아 주세요. 방장 기기에서 페이지를 닫으면 방이 종료됩니다.</div></section>`}</div>`;
- if(isHost&&window.QRCode&&mp.roomUrl){const qr=$('room-qr');if(qr){qr.innerHTML='';new QRCode(qr,{text:mp.roomUrl,width:210,height:210,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}}
-}
-function copyRoomLink(){if(!mp.roomUrl){toast('방장에게 초대 링크를 요청해 주세요.');return}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(mp.roomUrl).then(()=>toast('초대 링크를 복사했어요.')).catch(()=>window.prompt('아래 링크를 복사하세요',mp.roomUrl))}else window.prompt('아래 링크를 복사하세요',mp.roomUrl)}
-function startRoomMatch(){if(mp.mode!=='host'||mp.started)return;if(playerCount()<2){toast('친구가 입장한 뒤 시작해 주세요.');return}mp.started=true;mp.seed=Math.floor(Math.random()*2147483646)+1;const packet={type:'start',seed:mp.seed,roomCode:mp.roomCode,members:mp.members};Object.values(mp.connections).forEach(conn=>safeSend(conn,packet));startGame(true)}
-function renderRoomBoardContents(){
- const entries=Object.values(mp.members||{}).slice().sort((a,b)=>(Number(b.score)||0)-(Number(a.score)||0));
- if(!entries.length)return '<p class="empty">참가자 정보를 기다리는 중…</p>';
- return `<table><thead><tr><th>순위</th><th>참가자</th><th>진행</th><th>순자산</th><th>상태</th></tr></thead><tbody>${entries.map((p,i)=>`<tr><td>${i+1}</td><td>${safeName(p.name)}</td><td>${p.finished?'5/5년':p.year?`${p.year}/5년`:'대기'}</td><td>${money(Number(p.score)||0)}</td><td class="${p.finished?'positive':p.connected===false?'negative':''}">${p.finished?'완료':p.connected===false?'연결 끊김':'진행 중'}</td></tr>`).join('')}</tbody></table>`;
-}
-function renderRoomBoard(){if(!state||!state.onlineMatch)return '';return `<section class="panel room-board-wrap" id="room-board"><div class="panel-head"><div><div class="eyebrow">LIVE MULTIPLAYER</div><h3>방 실시간 순위</h3></div><span class="online-pill">방 ${safeName(mp.roomCode)}</span></div><div id="room-board-content">${renderRoomBoardContents()}</div><p class="small-note">각 참가자의 순자산과 진행 상황이 연결된 기기 사이에 공유됩니다.</p></section>`}
-function updateRoomBoard(){const el=$('room-board-content');if(el)el.innerHTML=renderRoomBoardContents();const final=$('room-final-board');if(final)final.innerHTML=renderRoomBoardContents()}
-function pushProgress(){
- if(!state||!state.onlineMatch)return;
- const report={type:'progress',name:state.name,year:state.year,score:Number(netWorth().toFixed(2)),finished:state.finished,infoCoins:state.infoCoins};
- if(mp.mode==='host'&&mp.peer){const old=mp.members[mp.peer.id]||{};mp.members[mp.peer.id]={...old,id:mp.peer.id,name:state.name,host:true,year:state.year,score:report.score,finished:state.finished,infoCoins:state.infoCoins,connected:true};broadcastRoster()}
- else if(mp.mode==='guest'&&mp.hostConn)safeSend(mp.hostConn,report);
-}
-function leaveRoom(){
- if(tickHandle){clearInterval(tickHandle);tickHandle=null}
- try{Object.values(mp.connections||{}).forEach(c=>c.close());if(mp.hostConn)mp.hostConn.close();if(mp.peer)mp.peer.destroy()}catch(e){}
- mp.mode='solo';mp.peer=null;mp.hostConn=null;mp.connections={};mp.members={};mp.name='';mp.roomCode='';mp.hostPeerId='';mp.roomUrl='';mp.started=false;mp.seed=0;mp.connecting=false;roomInviteActive=false;state=null;ASSETS.forEach(a=>a.price=1);
- try{history.replaceState(null,'',location.pathname)}catch(e){}
- renderWelcome();
-}
-function renderWelcome(){
- const joining=roomInviteActive;
- $('app').innerHTML=`<div class="brandline">A FINANCIAL STRATEGY GAME</div><h1 class="title">5개년 투자 챌린지</h1><p class="subtitle">정보를 읽고, 투자하고, 시장의 변화를 견뎌라.<br>5년 뒤 가장 높은 자산을 가진 참가자가 승리한다.</p><div class="ornament"></div><section class="welcome"><div class="welcome-grid"><div class="rule"><b>01 · 투자</b><span>예금·채권·주식·ETF·금에 투자하고 가격 상승, 이자, 배당으로 자산을 늘려 보자.</span></div><div class="rule"><b>02 · 정보</b><span>정보 코인 10개로 분야별 힌트를 구매할 수 있다. 저렴한 힌트는 1코인, 심층 힌트는 4코인이다.</span></div><div class="rule"><b>03 · 대결</b><span>친구와 방을 만들고 QR코드로 입장해 보자. 같은 시장에서 각자 투자하고 실시간 순위를 겨룬다.</span></div></div><label class="field-label" for="player-name">${joining?'대결에서 사용할 이름':'참가자 또는 모둠 이름'}</label><input class="text-input" id="player-name" maxlength="24" placeholder="예: 전기전자 탐구팀" value="${safeName(mp.name||'')}" /><p class="fineprint" style="margin-top:13px">시작 자금 100코인 · 정보 코인 10개 · 5년간 진행 · 최종 순자산 기준 순위<br>이 게임은 학습용 가상 시뮬레이션이며 실제 금융상품이나 미래 수익을 예측하지 않습니다.</p>${joining?`<div class="connection-note">초대받은 방 <b>${safeName(incomingRoom.roomCode)}</b>에 입장합니다. 방장이 대기실을 열어 둔 상태여야 합니다.</div><button class="gold-btn start-btn" onclick="joinRoomFromLink()">QR로 초대된 방에 입장 ↗</button><button class="ghost-btn start-btn" onclick="leaveRoom()">취소</button>`:`<div class="mp-actions"><button class="gold-btn" onclick="createRoom()">대결 방 만들기 ↗</button><button class="ghost-btn" onclick="startGame(false)">혼자 연습하기</button></div><p class="small-note">방을 만든 뒤 QR코드를 친구에게 보여 주세요. 다른 기기 접속을 위해 사이트를 HTTPS 주소로 게시해야 합니다.</p>`}</section><div class="ornament" style="margin-top:32px"></div>${renderLeaderboard(false)}`;
-}
-function renderLeaderboard(show){const records=scoreboard();if(!records.length)return `<p class="small-note">아직 기록이 없습니다. 첫 번째 도전자가 되어 보세요.</p>`;return `<div class="panel" style="max-width:650px;margin:22px auto 0"><div class="panel-head"><div><div class="eyebrow">HALL OF FAME</div><h3>최고 기록</h3></div><span class="tag">이 브라우저의 기록</span></div><table class="rank-table"><thead><tr><th>순위</th><th>참가자</th><th>최종 자산</th></tr></thead><tbody>${records.slice(0,5).map((r,i)=>`<tr><td>${i+1}</td><td>${safeName(r.name)}</td><td>${money(r.score)}</td></tr>`).join('')}</tbody></table></div>`}
-function startGame(onlineMatch=false){
- if(tickHandle)clearInterval(tickHandle);
- const name=onlineMatch?mp.name:((($('player-name')||{}).value)||'').trim()||'이름 없는 투자자';
- state={name:String(name).slice(0,24),cash:100,infoCoins:10,year:1,secondsLeft:360,started:true,finished:false,transitioning:false,holdings:{},costBasis:{},hintPurchases:{},hintResults:{},history:[],yearLog:[],startingWorth:100,onlineMatch:!!onlineMatch,matchSeed:onlineMatch?mp.seed:0};
- ASSETS.forEach(a=>a.price=1);startYear();
+function netWorth(){
+ return state.cash+assets.reduce((sum,a)=>sum+(state.holdings[a.id]||0)*a.price,0);
 }
 function startYear(){
- if(tickHandle)clearInterval(tickHandle);
- state.secondsLeft=360;state.transitioning=false;state.hintPurchases={};state.hintResults={};
- currentMarketRandom=state.onlineMatch?seededRandom((Number(state.matchSeed)||1)+(state.year*7919)):null;
- state.event=EVENTS[Math.floor(marketRandom()*EVENTS.length)];state.news=makeNews();state.returns={};
- ASSETS.forEach(a=>{let random=(marketRandom()*2-1)*a.vol;let impact=(state.event.impact&&state.event.impact[a.category])||0;let sectorImpact=(a.sector&&state.event.sector&&state.event.sector[a.sector])||0;let direct=(state.event.asset&&state.event.asset[a.id])||0;let r=a.base+random+impact+sectorImpact+direct;if(a.category==='deposit')r=Math.max(.012,Math.min(.072,r));else r=Math.max(-.68,Math.min(.62,r));state.returns[a.id]=r;});
- state.macro={rate:Math.max(1,Math.min(6,3.25+(marketRandom()-.5)*1.2+(state.event.title.includes('금리 인상')?.35:state.event.title.includes('금리 인하')?-.35:0))),inflation:Math.max(-.2,Math.min(8,2.3+(marketRandom()-.5)*2.8+(state.event.title.includes('물가')?1.5:0)))};
- renderGame();pushProgress();tickHandle=setInterval(()=>{if(!state||state.finished||state.transitioning)return;state.secondsLeft--;updateClock();if(state.secondsLeft<=0)closeYear(true)},1000);
+ currentNews=news[Math.floor(Math.random()*news.length)];
+ state.returns={};
+ assets.forEach(a=>{
+   const effect=currentNews.effects[a.id]||0;
+   const noise=random(-a.vol,a.vol);
+   state.returns[a.id]=Math.max(-.65,Math.min(.7,effect+noise));
+ });
+ $("year").textContent=state.year+"년 차";
+ $("newsTitle").textContent=currentNews.title;
+ $("newsDesc").textContent=currentNews.desc;
+ $("indicators").textContent=`기준금리 ${(random(2,5)).toFixed(2)}% · 물가 상승률 ${(random(1,6)).toFixed(2)}% · 시장 변동성 ${Math.round(random(20,90))}/100`;
+ $("nextYear").textContent=state.year===5?"5년 차 최종 결산":"연도 마감하고 다음 해로";
+ render();
 }
-function makeNews(){const notes=[
- `시장 참여자들은 ${['기업 실적','금리 변화','소비 지표','원자재 비용','신기술 투자'][Math.floor(marketRandom()*5)]}를 주의 깊게 보고 있다.`,
- `분산 투자는 한 자산의 손실이 전체 자산에 미치는 영향을 줄이는 데 도움이 될 수 있지만 손실을 완전히 막지는 못한다.`,
- `전문가 의견도 빗나갈 수 있다. 하나의 뉴스만 믿기보다 여러 지표와 자산의 위험을 비교해 보자.`,
- `장기 투자에서도 중간 가격은 크게 흔들릴 수 있다. 당장 필요한 돈과 투자할 돈을 구분하는 것이 중요하다.`,
- `배당이나 채권 이자는 현금 흐름을 제공하지만, 가격 하락이 그 수익을 넘어설 수도 있다.`
- ];return [state.event.desc,notes[Math.floor(marketRandom()*notes.length)],notes[Math.floor(marketRandom()*notes.length)]]}
-function timerText(){const m=Math.floor(state.secondsLeft/60),s=state.secondsLeft%60;return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
-function renderGame(){const yr=state.year;const steps=[1,2,3,4,5].map(n=>`<div class="year-step ${n===yr?'active':n<yr?'done':''}">${n<yr?'✓ ':''}${n}년 차</div>`).join('');
- $('app').innerHTML=`<div class="brandline">A FINANCIAL STRATEGY GAME</div><div class="topbar"><div class="greeting"><small>INVESTOR · ${safeName(state.name)}</small><h2>제${yr}년 투자 전략</h2><p>뉴스를 분석하고, 자산 배분을 조정한 뒤 연도를 마감하세요.</p></div><div class="stats"><div class="stat money"><span>보유 현금</span><strong>${state.cash.toFixed(2)}</strong></div><div class="stat"><span>현재 순자산</span><strong>${netWorth().toFixed(2)}</strong></div><div class="stat info"><span>정보 코인</span><strong>${state.infoCoins}</strong></div><div class="stat timer"><span>남은 시간</span><strong id="timer-value">${timerText()}</strong></div></div></div><div class="year-track">${steps}</div>${renderRoomBoard()}
- <div class="news-grid"><section class="panel"><div class="panel-head"><div><div class="eyebrow">YEAR ${yr} · MARKET BRIEFING</div><h3>올해의 주요 뉴스</h3></div><span class="tag">시장 변수</span></div><div class="news-event">${state.event.title}</div><p class="news-desc">${state.event.desc}</p><ul class="news-list">${state.news.slice(1).map(n=>`<li>${n}</li>`).join('')}</ul></section><section class="panel"><div class="panel-head"><div><div class="eyebrow">ECONOMIC INDICATORS</div><h3>경제 지표</h3></div><span class="tag">참고 자료</span></div><div class="asset-metrics" style="margin-top:18px"><div>기준금리<strong>${state.macro.rate.toFixed(2)}%</strong></div><div>물가 상승률<strong>${state.macro.inflation.toFixed(2)}%</strong></div><div>보유 자산 수<strong>${ASSETS.filter(a=>(state.holdings[a.id]||0)>0).length}개</strong></div></div><p class="news-desc" style="margin-top:14px">지표는 투자 판단을 위한 참고 자료이며, 특정 자산의 수익을 보장하지 않습니다. 시장 뉴스의 영향은 자산마다 다르게 나타납니다.</p></section></div>
- <div class="section-title"><div><h3>투자 상품</h3><p>투자할 금액을 입력한 뒤 매수·매도를 선택하세요. 매도 금액은 현재 평가액 기준입니다.</p></div><span class="tag">BUY LOW · SELL SMART</span></div><div class="asset-grid">${ASSETS.map(renderAssetCard).join('')}</div>
- <div class="section-title"><div><h3>정보 상점</h3><p>각 분야에서 싼 힌트와 비싼 힌트를 하나씩 구매할 수 있습니다. 남은 정보 코인은 다음 해에도 유지됩니다.</p></div><span class="tag">힌트는 예측일 뿐, 정답이 아닙니다</span></div><div class="hint-grid">${Object.keys(CATEGORY_INFO).map(renderHintCard).join('')}</div>
- <div class="bottom-grid"><section class="panel"><div class="panel-head"><div><div class="eyebrow">PORTFOLIO</div><h3>내 투자 현황</h3></div><span class="tag">현재 평가액</span></div>${renderHoldingsTable()}</section><section class="panel"><div class="panel-head"><div><div class="eyebrow">YEARLY RECORD</div><h3>투자 기록</h3></div><span class="tag">최근 기록</span></div>${renderLogs()}</section></div>
- <div class="footer-actions"><p class="fineprint">연도 마감 시 자산 가격 변화가 반영되고, 예금 이자·채권 이자·주식 및 ETF 배당이 지급됩니다. 일부 연도에는 예기치 못한 보너스나 지출이 발생할 수 있습니다.</p><button class="gold-btn" onclick="askCloseYear()">${yr===5?'5년 차 결산하기':'연도 마감하고 다음 해로 →'}</button></div><p class="small-note">학습용 가상 게임 · 실제 투자 조언이 아닙니다.</p>`;
+function render(){
+ $("cash").textContent=money(state.cash);
+ $("worth").textContent=money(netWorth());
+ $("coins").textContent=state.coins;
+ $("assets").innerHTML=assets.map(a=>{
+   const quantity=state.holdings[a.id]||0;
+   const value=quantity*a.price;
+   return `<article class="asset">
+   <h3>${a.name}</h3><div class="muted">${a.category}</div>
+   <div class="price">${money(a.price)} 코인/단위</div>
+   <p class="muted">${a.desc}</p>
+   <p>예상 이자·배당: ${(a.yield*100).toFixed(1)}%</p>
+   <p>보유 평가액: <b>${money(value)}</b></p>
+   <input id="amount-${a.id}" type="number" min="1" step="1" placeholder="거래 금액">
+   <div class="actions">
+   <button onclick="buy('${a.id}')">매수</button>
+   <button class="sell" onclick="sell('${a.id}')">매도</button>
+   </div></article>`;
+ }).join("");
+ $("hints").innerHTML=Object.entries(categories).map(([cat,h])=>`
+ <article class="hint"><h3>${cat}</h3>
+ <p class="muted">저렴한 힌트 1코인 · 심층 힌트 4코인</p>
+ <button onclick="hint('${cat}',1)">저렴한 힌트 구매</button>
+ <button onclick="hint('${cat}',4)">심층 힌트 구매</button>
+ </article>`).join("");
+ renderPortfolio();
 }
-function renderAssetCard(a){const qty=state.holdings[a.id]||0;const val=qty*a.price;return `<article class="asset-card"><div class="asset-top"><div><div class="asset-symbol">${a.symbol}</div><h4>${a.name}</h4><div class="asset-type">${a.type}</div></div><span class="tag">${a.category==='deposit'?'예금':a.category==='bond'?'채권':a.category==='stock'?'주식':a.category==='etf'?'ETF':'원자재'}</span></div><div class="price">${a.price.toFixed(3)} <span style="font-size:11px;color:#93876c">코인/단위</span></div><div class="price-caption">올해 마감 후 가격이 변동됩니다</div><p class="asset-desc">${a.desc}</p><div class="asset-metrics"><div>예상 현금 수익<strong>${a.yield?`${(a.yield*100).toFixed(1)}%`:a.category==='deposit'?'예금 이자':'없음'}</strong></div><div>위험 수준<strong>${a.category==='deposit'?'낮음':a.id==='govbond'?'낮음~보통':a.category==='bond'?'보통~높음':a.vol>.2?'높음':a.category==='gold'?'보통':'보통~높음'}</strong></div></div><div class="holding-line">보유 평가액: <strong>${money(val)}</strong></div><div class="trade-row"><input class="amount-input" id="amount-${a.id}" type="number" min="1" max="${Math.max(1,state.cash)}" step="1" placeholder="금액 입력 (예: 10)" aria-label="${a.name} 거래 금액" /><button class="buy-btn" onclick="buyAsset('${a.id}')">매수</button><button class="sell-btn" onclick="sellAsset('${a.id}')" ${val<.01?'disabled':''}>매도</button></div></article>`}
-function renderHintCard(cat){const info=CATEGORY_INFO[cat],cheapKey=`${cat}:cheap`,expKey=`${cat}:expensive`,cheapBought=!!state.hintPurchases[cheapKey],expBought=!!state.hintPurchases[expKey],result=state.hintResults[cat];return `<article class="hint-card"><h4>${info.label}</h4><p>${info.tip}</p><div class="hint-buttons"><button class="cheap" onclick="buyHint('${cat}','cheap')" ${cheapBought||state.infoCoins<1?'disabled':''}>저렴한 힌트 · 1코인</button><button class="expensive" onclick="buyHint('${cat}','expensive')" ${expBought||state.infoCoins<4?'disabled':''}>심층 힌트 · 4코인</button></div><div class="hint-bought">${cheapBought?'저렴한 힌트 구매 완료':expBought?'심층 힌트 구매 완료':''}</div><div class="hint-result ${result?'show':''}">${result||'아직 구매한 힌트가 없습니다.'}</div></article>`}
-function renderHoldingsTable(){const holdings=ASSETS.filter(a=>(state.holdings[a.id]||0)>0);if(!holdings.length)return `<div class="empty">아직 투자한 상품이 없습니다.<br>현금 일부를 투자해 보세요.</div>`;return `<table class="holding-table"><thead><tr><th>상품</th><th>매입 단위</th><th>평가액</th><th>평가손익*</th></tr></thead><tbody>${holdings.map(a=>{const q=state.holdings[a.id],v=q*a.price,basis=state.costBasis[a.id]||0;const gain=v-basis;return `<tr><td>${a.name}</td><td>${q.toFixed(2)}</td><td>${money(v)}</td><td class="${gain>=0?'positive':'negative'}">${gain>=0?'+':''}${gain.toFixed(2)}</td></tr>`}).join('')}</tbody></table><p class="fineprint" style="margin-top:10px">* 평가손익은 실제 매수에 사용한 금액과 현재 평가액의 차이입니다. 지급된 이자·배당은 현금에 반영됩니다.</p>`}
-function renderLogs(){if(!state.yearLog.length&&!state.history.length)return `<div class="empty">아직 기록이 없습니다.<br>첫 거래부터 기록됩니다.</div>`;const items=[...state.yearLog.slice(-3).reverse(),...state.history.slice(-5).reverse()].slice(0,7);return `<ul class="log-list">${items.map(item=>`<li>${item}</li>`).join('')}</ul>`}
-function buyAsset(id){if(state.transitioning||state.finished)return;const a=ASSETS.find(x=>x.id===id);const input=$(`amount-${id}`);const amount=Number(input.value);if(!Number.isFinite(amount)||amount<=0){toast('매수 금액을 1코인 이상 입력해 주세요.');return}if(amount>state.cash+.0001){toast('보유 현금이 부족합니다.');return}state.cash-=amount;state.holdings[id]=(state.holdings[id]||0)+amount/a.price;state.costBasis[id]=(state.costBasis[id]||0)+amount;state.history.push(`<b>${state.year}년 차</b> · ${a.name} ${money(amount)} 매수`);renderGame();pushProgress();toast(`${a.name} 매수 완료`)}
-function sellAsset(id){if(state.transitioning||state.finished)return;const a=ASSETS.find(x=>x.id===id);const input=$(`amount-${id}`);const amount=Number(input.value);const qty=state.holdings[id]||0;const value=qty*a.price;if(!qty){toast('매도할 보유 수량이 없습니다.');return}if(!Number.isFinite(amount)||amount<=0){toast('매도 금액을 1코인 이상 입력해 주세요.');return}const sellValue=Math.min(amount,value),sellQty=sellValue/a.price,ratio=Math.min(1,sellQty/qty);state.holdings[id]=Math.max(0,qty-sellQty);state.costBasis[id]=(state.costBasis[id]||0)*(1-ratio);if(state.holdings[id]<.000001){state.holdings[id]=0;state.costBasis[id]=0}state.cash+=sellValue;state.history.push(`<b>${state.year}년 차</b> · ${a.name} ${money(sellValue)} 매도`);renderGame();pushProgress();toast(`${a.name} 매도 완료`)}
-function buyHint(cat,tier){if(state.transitioning||state.finished)return;const key=`${cat}:${tier}`;const cost=tier==='cheap'?1:4;if(state.hintPurchases[key]){toast('올해는 같은 단계의 힌트를 이미 구매했습니다.');return}if(state.infoCoins<cost){toast('정보 코인이 부족합니다.');return}state.infoCoins-=cost;state.hintPurchases[key]=true;const assets=categoryAssets(cat);const outcomes=assets.map(a=>({a,actual:state.returns[a.id]})).sort((x,y)=>y.actual-x.actual);const avg=outcomes.reduce((s,x)=>s+x.actual,0)/outcomes.length;let result='';
- if(tier==='cheap'){
-  let signal=avg>=.08?'상승 가능성이 비교적 높음':avg>=.025?'완만한 상승 신호':avg>-.035?'방향이 엇갈리는 혼조':avg>-.10?'하락 위험에 주의':'하락 압력이 강한 편';
-  const second=cat==='deposit'?'예금은 큰 가격 변동보다 이자 조건을 비교하는 편이 중요합니다.':cat==='bond'?'금리 변화와 발행자의 신용 위험을 함께 확인하세요.':cat==='stock'?'개별 기업의 차이가 커질 수 있으니 여러 기업을 비교하세요.':cat==='etf'?'ETF의 구성 종목이 어느 업종에 집중되어 있는지 살펴보세요.':'물가와 시장 불안이 금 가격에 영향을 줄 수 있지만 상승을 보장하진 않습니다.';
-  result=`<strong>기본 신호: ${signal}</strong><br>이 분야의 단순 평균 예상 수익은 ${avg>=0?'플러스':'마이너스'} 방향입니다. ${second}`;
- }else{
-  // Detailed clues are intentionally noisy; they are not guarantees or exact future returns.
-  const est=outcomes.map(o=>({a:o.a,estimate:o.actual+(Math.random()-.5)*(cat==='stock'?.12:.07)})).sort((x,y)=>y.estimate-x.estimate);
-  const low=Math.min(...est.map(x=>x.estimate)),high=Math.max(...est.map(x=>x.estimate));
-  if(cat==='stock')result=`<strong>기업별 전망 비교</strong><br>상대적으로 유리한 후보: ${est.slice(0,2).map(x=>x.a.name).join(' · ')}<br>상대적으로 조심할 후보: ${est.slice(-2).map(x=>x.a.name).join(' · ')}<br>이 분야의 추정 범위: ${pct(low)} ~ ${pct(high)}. 기업별 차이가 크며 예측 오차가 발생할 수 있습니다.`;
-  else if(cat==='bond')result=`<strong>금리·신용 위험 분석</strong><br>이자 수익만 보지 말고 가격 변동을 합쳐 판단하세요. 상품 간 추정 가격 변화 범위는 ${pct(low)} ~ ${pct(high)}이며, 회사채는 신용 불안 뉴스에 더 민감할 수 있습니다.`;
-  else if(cat==='deposit')result=`<strong>금리 전망 분석</strong><br>예금 수익률 추정 범위: ${pct(low)} ~ ${pct(high)}. 물가 상승률(${state.macro.inflation.toFixed(1)}%)보다 이자가 낮으면 구매력이 줄어들 수도 있습니다.`;
-  else if(cat==='etf')result=`<strong>ETF 비교 분석</strong><br>구성 자산별 추정 범위: ${pct(low)} ~ ${pct(high)}. 시장형과 기술형 ETF는 같은 해에도 결과가 다를 수 있습니다.`;
-  else result=`<strong>금 가격 요인 분석</strong><br>금 가격 추정 변화 범위: ${pct(low)} ~ ${pct(high)}. 물가와 불확실성은 참고하되, 금도 손실을 낼 수 있다는 점을 기억하세요.`;
+function buy(id){
+ const a=assets.find(x=>x.id===id);
+ const amount=Number($("amount-"+id).value);
+ if(!Number.isFinite(amount)||amount<=0){alert("매수 금액을 입력하세요.");return}
+ if(amount>state.cash){alert("보유 현금이 부족합니다.");return}
+ state.cash-=amount;
+ state.holdings[id]=(state.holdings[id]||0)+amount/a.price;
+ state.basis[id]=(state.basis[id]||0)+amount;
+ log(`${state.year}년 차 · ${a.name} ${money(amount)}코인 매수`);
+ render();
+}
+function sell(id){
+ const a=assets.find(x=>x.id===id);
+ const amount=Number($("amount-"+id).value);
+ const qty=state.holdings[id]||0;
+ if(!Number.isFinite(amount)||amount<=0){alert("매도 금액을 입력하세요.");return}
+ if(qty<=0){alert("매도할 자산이 없습니다.");return}
+ const value=Math.min(amount,qty*a.price);
+ const soldQty=value/a.price;
+ state.holdings[id]-=soldQty;
+ state.basis[id]=(state.basis[id]||0)*(1-soldQty/qty);
+ state.cash+=value;
+ log(`${state.year}년 차 · ${a.name} ${money(value)}코인 매도`);
+ render();
+}
+function hint(cat,cost){
+ if(state.coins<cost){alert("정보 코인이 부족합니다.");return}
+ state.coins-=cost;
+ const categoryAssets=assets.filter(a=>a.category===cat);
+ const avg=categoryAssets.reduce((s,a)=>s+state.returns[a.id],0)/categoryAssets.length;
+ const signal=avg>.07?"상승 신호가 비교적 강합니다.":avg>.015?"완만한 상승 가능성이 있습니다.":avg>-.04?"자산별 방향이 엇갈릴 수 있습니다.":"하락 위험에 주의하세요.";
+ const message=cost===1?signal:categories[cat].expensive;
+ alert(`${cat} 힌트\n${message}\n\n힌트는 예측이며 수익을 보장하지 않습니다.`);
+ log(`${state.year}년 차 · ${cat} ${cost===1?"저렴한":"심층"} 힌트 구매 (-${cost}코인)`);
+ render();
+}
+function renderPortfolio(){
+ const held=assets.filter(a=>(state.holdings[a.id]||0)>0);
+ if(!held.length){$("portfolio").innerHTML="<p class='muted'>아직 보유한 상품이 없습니다.</p>";return}
+ $("portfolio").innerHTML=`<table><tr><th>상품</th><th>수량</th><th>평가액</th><th>평가손익</th></tr>
+ ${held.map(a=>{
+   const qty=state.holdings[a.id],value=qty*a.price;
+   const gain=value-(state.basis[a.id]||0);
+   return `<tr><td>${a.name}</td><td>${qty.toFixed(2)}</td><td>${money(value)}</td><td class="${gain>=0?"positive":"negative"}">${gain>=0?"+":""}${money(gain)}</td></tr>`;
+ }).join("")}</table>`;
+}
+function closeYear(){
+ if(!confirm(`${state.year}년 차를 마감할까요?`))return;
+ const before=netWorth();
+ let returnsLog=[];
+ assets.forEach(a=>{
+   const r=state.returns[a.id];
+   a.price=Math.max(.05,a.price*(1+r));
+   const qty=state.holdings[a.id]||0;
+   const income=qty*a.price*a.yield;
+   state.cash+=income;
+   if(qty)returnsLog.push(`${a.name} ${(r*100).toFixed(1)}%`);
+ });
+ let surprise="";
+ const chance=Math.random();
+ if(chance<.15){
+   const bonus=random(5,15);state.cash+=bonus;
+   surprise=`프로젝트 보상 +${money(bonus)}코인`;
+ }else if(chance<.3){
+   const bill=Math.min(state.cash,random(3,12));state.cash-=bill;
+   surprise=`예상치 못한 지출 -${money(bill)}코인`;
  }
- state.hintResults[cat]=result;state.history.push(`<b>${state.year}년 차</b> · ${CATEGORY_INFO[cat].label} ${tier==='cheap'?'저렴한':'심층'} 힌트 구매 (-${cost} 정보 코인)`);renderGame();pushProgress();toast(`${CATEGORY_INFO[cat].label} 힌트를 구매했습니다.`)}
-function askCloseYear(){if(state.transitioning||state.finished)return;const cover=document.createElement('div');cover.className='confirm-cover';cover.id='confirm-close';cover.innerHTML=`<div class="confirm-box"><div class="eyebrow">YEAR ${state.year} SETTLEMENT</div><h3>${state.year}년 차를 마감할까요?</h3><p>연도를 마감하면 투자 상품 가격 변동과 이자·배당이 반영됩니다. 남은 시간은 이월되지 않습니다.</p><div class="actions"><button class="ghost-btn" onclick="document.getElementById('confirm-close').remove()">계속 투자하기</button><button class="gold-btn" onclick="document.getElementById('confirm-close').remove();closeYear(false)">연도 마감</button></div></div>`;document.body.appendChild(cover)}
-function closeYear(auto){if(!state||state.finished||state.transitioning)return;state.transitioning=true;if(tickHandle){clearInterval(tickHandle);tickHandle=null}const before=netWorth(),cashBefore=state.cash;let interest=0,dividends=0;const summary=[];
- ASSETS.forEach(a=>{const qty=state.holdings[a.id]||0;if(!qty)return;const oldValue=qty*a.price;const ret=state.returns[a.id];a.price=Math.max(.02,a.price*(1+ret));const newValue=qty*a.price;const income=newValue*a.yield;if(income>0){state.cash+=income;dividends+=income;if(a.category==='bond')interest+=income;}summary.push(`${a.name} ${pct(ret)}`)});
- // A small chance of a non-market personal finance event adds another way to gain or lose money.
- let surprise='';const r=Math.random();if(r<.14){const bonus=4+Math.random()*8;state.cash+=bonus;surprise=`예상치 못한 프로젝트 보상 +${bonus.toFixed(2)}코인`; }else if(r<.27){const bill=3+Math.random()*8;const actual=Math.min(state.cash,bill);state.cash-=actual;surprise=`예상치 못한 지출 -${actual.toFixed(2)}코인`;}
- const after=netWorth(),change=after-before;const yline=`<b>${state.year}년 차 결산</b> · 순자산 ${before.toFixed(2)} → ${after.toFixed(2)}코인 (${change>=0?'+':''}${change.toFixed(2)})`;state.yearLog.push(yline);if(summary.length)state.history.push(`<b>시장 반영</b> · ${summary.slice(0,4).join(' / ')}${summary.length>4?' …':''}`);if(dividends>0)state.history.push(`<b>현금 수익</b> · 이자·배당 +${dividends.toFixed(2)}코인`);if(surprise)state.history.push(`<b>돌발 변수</b> · ${surprise}`);state.lastSettlement={before,after,change,surprise,summary,dividends,interest};
- if(state.year>=5){state.finished=true;saveScore({name:state.name,score:Number(after.toFixed(2)),date:new Date().toLocaleDateString('ko-KR')});pushProgress();renderEnd();}
- else{state.year+=1;startYear();toast(`${state.year-1}년 차 결산 완료 · ${change>=0?'+':''}${change.toFixed(2)}코인`)} }
-function renderEnd(){if(tickHandle)clearInterval(tickHandle);tickHandle=null;const final=netWorth(),gain=final-state.startingWorth,ratio=gain/state.startingWorth*100,records=scoreboard();const rank=records.findIndex(r=>r.name===state.name&&r.score===Number(final.toFixed(2)))+1;
- $('app').innerHTML=`<div class="brandline">CHALLENGE COMPLETED</div><div class="end-panel"><div class="eyebrow">5 YEARS · FINAL SETTLEMENT</div><h2>투자 챌린지 종료</h2><p class="subtitle" style="margin-bottom:5px">${safeName(state.name)}의 5개년 투자 결과</p><div class="final-score">${money(final)}</div><div class="${gain>=0?'positive':'negative'}" style="font:17px Arial,sans-serif">${gain>=0?'+':''}${gain.toFixed(2)} 코인 (${ratio>=0?'+':''}${ratio.toFixed(1)}%)</div><p class="result-note">${gain>0?'초기 자산보다 순자산이 증가했습니다. 어떤 선택이 도움이 되었는지 연도별 기록을 살펴보세요.':gain<0?'초기 자산보다 순자산이 감소했습니다. 특정 자산에 집중했는지, 시장 뉴스와 위험을 어떻게 판단했는지 되짚어 보세요.':'초기 자산과 최종 자산이 같습니다. 수익뿐 아니라 위험과 기회비용도 함께 돌아보세요.'}<br>${state.onlineMatch?'같은 방의 실시간 순위는 아래 표에서 확인할 수 있습니다.':'최종 순위는 이 브라우저에 저장된 최고 기록을 기준으로 표시됩니다.'}</p><div class="panel" style="max-width:700px;margin:0 auto 20px;text-align:left"><div class="panel-head"><div><div class="eyebrow">YEAR-BY-YEAR</div><h3>연도별 결산</h3></div></div><table class="holding-table"><thead><tr><th>연도</th><th>시장 이벤트</th><th>순자산 변화</th></tr></thead><tbody>${state.yearLog.map((l,i)=>{const hs=state.history.find(x=>x.includes(`${i+1}년 차`)&&x.includes('시장 반영'));return `<tr><td>${i+1}년 차</td><td style="text-align:left">${i===0?'시장 상황 변화':i===1?'기업별 수익률 차이':i===2?'가격·이자·배당 반영':i===3?'현금 흐름과 위험': '최종 시장 반영'}</td><td>${l.replace(/<[^>]*>/g,'')}</td></tr>`}).join('')}</tbody></table></div><div class="panel" style="max-width:700px;margin:0 auto;text-align:left"><div class="panel-head"><div><div class="eyebrow">HALL OF FAME</div><h3>참가자 순위</h3></div><span class="tag">TOP 10</span></div><table class="rank-table"><thead><tr><th>순위</th><th>참가자</th><th>최종 자산</th><th>기록일</th></tr></thead><tbody>${records.map((r,i)=>`<tr class="${r.name===state.name&&r.score===Number(final.toFixed(2))?'mine':''}"><td>${i+1}</td><td>${safeName(r.name)}</td><td>${money(r.score)}</td><td>${safeName(r.date||'')}</td></tr>`).join('')}</tbody></table></div>${state.onlineMatch?`<div style="max-width:700px;margin:22px auto"><button class="ghost-btn" onclick="leaveRoom()">대결 방 나가기</button></div>`:`<div style="max-width:700px;margin:22px auto;display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="gold-btn" onclick="restartForNext()">다른 참가자 도전</button><button class="ghost-btn" onclick="renderWelcome()">처음 화면으로</button></div>`}${state.onlineMatch?`<div class="panel" style="max-width:750px;margin:20px auto;text-align:left"><div class="panel-head"><div><div class="eyebrow">LIVE ROOM RESULT</div><h3>같은 방 실시간 순위</h3></div><span class="online-pill">${safeName(mp.roomCode)}</span></div><div id="room-final-board" class="room-board-wrap">${renderRoomBoardContents()}</div><p class="fineprint">다른 참가자가 게임을 진행 중이면 순위와 최종 자산은 계속 갱신됩니다. 방장이 만든 탭이 열려 있어야 연결됩니다.</p></div>`:''}<p class="fineprint" style="margin:25px auto 0">${state.onlineMatch?'온라인 순위는 방장이 연결을 유지하는 동안 같은 방 참가자에게 공유됩니다.':'기록은 현재 브라우저에만 저장됩니다. 다른 컴퓨터나 브라우저와 자동으로 공유되지 않습니다.'} 게임은 교육용 가상 모델이며 실제 시장을 그대로 재현하지 않습니다.</p></div>`}
-function restartForNext(){if(state&&state.onlineMatch){toast('온라인 대결은 방의 순위를 확인한 뒤 방을 나가 주세요.');return}state=null;ASSETS.forEach(a=>a.price=1);renderWelcome()}
-function updateClock(){const el=$('timer-value');if(el)el.textContent=timerText()}
-renderWelcome();
+ const after=netWorth();
+ log(`<b>${state.year}년 차 결산</b> · ${money(before)} → ${money(after)}코인`);
+ if(returnsLog.length)log(`시장 변화 · ${returnsLog.join(" / ")}`);
+ if(surprise)log(`돌발 사건 · ${surprise}`);
+ if(state.year===5){finish();return}
+ state.year++;
+ startYear();
+}
+function finish(){
+ state.finished=true;
+ $("game").hidden=true;
+ $("result").hidden=false;
+ const final=netWorth(),change=final-state.starting;
+ $("finalName").textContent=state.name+"의 최종 결과";
+ $("finalWorth").textContent=money(final)+" 코인";
+ $("finalChange").textContent=`초기 자산 대비 ${change>=0?"+":""}${money(change)}코인 (${(change/state.starting*100).toFixed(1)}%)`;
+ $("finalChange").className=change>=0?"positive":"negative";
+ $("finalLog").innerHTML=$("log").innerHTML;
+}
 </script>
 </body>
 </html>
